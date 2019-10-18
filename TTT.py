@@ -3,25 +3,28 @@ from IPython.display import clear_output
 def display_board(board):
     
     clear_output()
-    print (board[7]+'|'+board[8]+'|'+board[9])
-    print (board[4]+'|'+board[5]+'|'+board[6])
-    print (board[1]+'|'+board[2]+'|'+board[3])
+    print (' '+board[7]+' | '+board[8]+' | '+board[9])
+    print ('-----------')
+    print (' '+board[4]+' | '+board[5]+' | '+board[6])
+    print ('-----------')
+    print (' '+board[1]+' | '+board[2]+' | '+board[3])
 board = [' ']*10
 
 def player_input():
     
     marker = ''
     
-    while marker !='X' and marker !='O':
+    while marker.capitalize() !='X' and marker.capitalize() !='O':
         marker = input('Player 1, chose X or O :')
     
-    player1=marker
+    player1=marker.capitalize()
+    
     if player1=='X':
         player2='O'
     else:
         player2='X'
     return (player1,player2) 
-player1_marker , player2_marker = player_input()   
+
 def place_marker(board,marker,position):
 	board[position]=marker
 def win_check(board,mark):
@@ -60,7 +63,7 @@ def player_choice(board):
     return position
 def replay():
     choice = input('Play Again? Enter Yes or No : ')
-    return choice == 'Yes'
+    return choice.upper() == 'YES'
 
 #-----------------------------------------------------------------------------#    
 print('Welcome to TIC TAC TOE')
@@ -73,10 +76,10 @@ while True:
     player1_marker, player2_marker = player_input()
     
     turn = chose_first()
-    print(turn + 'WILL GO FIRST')
+    print(turn + ' will go first')
     
-    play_game = input('Ready to play? y or n : ')
-    if play_game=='y':
+    play_game = input('Ready to play? Y or N : ')
+    if play_game.capitalize()=='Y':
         game_on = True
     else:
         game_on = False
